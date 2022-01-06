@@ -1,0 +1,38 @@
+.card {
+  width: 20rem;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.card .btn {
+  background: linear-gradient(
+    140deg,
+    #42c3ca 0%,
+    #42c3ca 50%,
+    #42c3cac7 75%
+  ) !important;
+}
+.modal {
+  text-align: center;
+}
+.modal-body img {
+  width: 100%;
+}
+.section-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  float: center;
+}
+@media (max-width: 1200px) {
+  .section-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 768px) {
+  .section-grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
