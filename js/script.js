@@ -101,21 +101,20 @@ const renderElements = async(evt) => {
     const response = await getRedditInfo(name);
     const info = await response.json();
 
-    let noOfElement = 0;
-    let myset = new Set();
+    
 
-    while(noOfElement < 6){
-        let imageIdx = Math.floor(Math.random() * info.data.children.length); 
-        let url = info.data.children[imageIdx].data.thumbnail;
-        let title = info.data.children[imageIdx].data.title;
+    let len = info.data.children.length;
+    let idx = 0;
+    while(idx < len){
+        let url = info.data.children[idx].data.url;
+        let title = info.data.children[idx].data.title;
+        let numComments = info.data.children[idx].data.num_comments;
 
-        if(url == "self" || myset.has(imageIdx) == true){ continue; }
+        if(url.substring(0,18) === "https://i.redd.it/"){
+            createCard(url,title,name+idx,numComments);
+        }
+        idx++;
 
-        let numComments = info.data.children[imageIdx].data.num_comments;
-        createCard(url,title,name+noOfElement,numComments);
-
-        noOfElement++;
-        myset.add(imageIdx);
     }
     }catch(err){
         console.log(err);
